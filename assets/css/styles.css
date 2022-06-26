@@ -1,6 +1,30 @@
-.center {
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+
+.row {
+    display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    flex: 50%;
+    padding: 5px;
+}
+.header {
+    margin-top: 15px;
+    color: gold;
+    font-family: Arial Black;
+}
+
+
+.body {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+.aboutme-body{
+    background-color:aliceblue;
 }
