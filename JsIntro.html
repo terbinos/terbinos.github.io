@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Js Functions</title>
+    <script>
+      /* runs test to see if expected argument is === to value returned by argument */
+      function myFunctionTest(expected, found) {
+        return expected === found
+          ? "TEST SUCCEEDED"
+          : "TEST FAILED.  Expected " + expected + " found " + found;
+      }
+
+      /* runs test to see if expected argument is === to value returned by argument */
+      function myFunctionTestArrayEquality(expected, found) {
+        return JSON.stringify(expected) === JSON.stringify(found)
+          ? "TEST SUCCEEDED"
+          : "TEST FAILED.  Expected " + expected + " found " + found;
+      }
+
+      /* max returns the maximum of 2 arguments */
+      function max(a, b) {
+        return a > b ? a : b;
+      }
+      console.log(
+        "Expected output of max(20,10) is 20  " +
+          myFunctionTest(20, max(20, 10))
+      );
+
+      /* max3 takes 3 numbers as arguments and returns the largest */
+      function maxOfThree(a, b, c) {
+        return max(max(a, b), c);
+      }
+
+      console.log(
+        "Expected output of maxOfThree(5,4,44) is 44  " +
+          myFunctionTest(44, maxOfThree(5, 4, 44))
+      );
+      console.log(
+        "Expected output of maxOfThree(55,4,44) is 55  " +
+          myFunctionTest(55, maxOfThree(55, 4, 44))
+      );
+
+      console.log(
+        "Expected output of maxOfThree(55,4,44) is 55  " +
+          myFunctionTest(55, maxOfThree(55, 4, 44))
+      );
+
+      function isVowel(char) {
+        let vowel = "a e i o u";
+        return vowel.includes(char);
+      }
+
+      console.log(
+        'Excepted out of isVowel("a") is true ' +
+          myFunctionTest(true, isVowel("a"))
+      );
+      console.log(
+        'Excepted out of isVowel("b") is false ' +
+          myFunctionTest(false, isVowel("b"))
+      );
+
+      function sum(num) {
+        sum = 0;
+        for (let i = 0; i < num.length; ++i) {
+          sum += num[i];
+        }
+        return sum;
+      }
+
+      function multiply(num) {
+        mult = 1;
+        for (let i = 0; i < num.length; ++i) {
+          mult *= num[i];
+        }
+        return mult;
+      }
+
+      console.log(
+        "Excepted out of sum([1, 2, 3, 4]) is 10 " +
+          myFunctionTest(10, sum([1, 2, 3, 4]))
+      );
+      console.log(
+        "Excepted out of multiply([1, 2, 3, 4]) is 24 " +
+          myFunctionTest(24, multiply([1, 2, 3, 4]))
+      );
+
+      function reverse(str) {
+        reverseStr = "";
+        for (let i = str.length - 1; i >= 0; --i) {
+          reverseStr += str.charAt(i);
+        }
+
+        return reverseStr;
+      }
+
+      console.log(
+        'Excepted out of reverse("daniel") is leinad ' +
+          myFunctionTest("leinad", reverse("daniel"))
+      );
+
+      function findLongestWord(words) {
+        longestWord = 0;
+        const myArr = words.split(" ");
+        for (let i = 0; i < myArr.length; ++i) {
+          if (longestWord < myArr[i].length) longestWord = myArr[i].length;
+        }
+        return longestWord;
+      }
+
+      console.log(
+        'Excepted out of findLongestWord("returns the length of the longest one") is 7 ' +
+          myFunctionTest(
+            7,
+            findLongestWord("returns the length of the longest one")
+          )
+      );
+
+      function filterLongWords(words, wordLength) {
+        let longestWords = [];
+        for (let i = 0; i < words.length; ++i) {
+          if (words[i].length > wordLength) {
+            longestWords.push(words[i]);
+          }
+        }
+        return longestWords;
+      }
+
+      console.log(
+        'Excepted out of filterLongWords(["returns", "the", "length", "of", "the", "longest", "one"]) is ["returns", "longest"] ' +
+          myFunctionTestArrayEquality(
+            ["returns", "longest"],
+            filterLongWords(
+              ["returns", "the", "length", "of", "the", "longest", "one"],
+              6
+            )
+          )
+      );
+
+      const a = [1, 3, 5, 3, 3];
+
+      const b = a.map((e) => e * 10);
+      console.log("a) Multiply each element by 10");
+      console.log(b);
+
+      const c = a.filter((e) => e === 3);
+      console.log("b) Return array with all elements equal to 3");
+      console.log(c);
+
+      const d = a.reduce((e1, e2) => e1 + e2);
+      console.log("c) Return the product of all elements");
+      console.log(d);
+
+      function shortest(a, b, c) {
+        let short = a;
+        if (b.length < short.length) {
+          short = b;
+        }
+        if (c.length < short.length) {
+          short = c;
+        }
+        return short;
+      }
+
+      console.log(shortest("hello", "z", "bye"));
+    </script>
+  </head>
+
+  <body>
+    Look in the Chrome developer console to see the output. CTRL_SHIFT_J <br />
+    Or on Firefox with CTRL_SHIFT_K
+  </body>
+</html>
