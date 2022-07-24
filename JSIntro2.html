@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Js Functions</title>
+    <script>
+      /* runs test to see if expected argument is === to value returned by argument */
+      function myFunctionTest(expected, found) {
+        return expected === found
+          ? "TEST SUCCEEDED"
+          : "TEST FAILED.  Expected " + expected + " found " + found;
+      }
+
+      function myFunctionTestForLongWords(expected, found) {
+        result = false;
+        if(expected.length !== found.length){
+            return "TEST FAILED.  Expected Number of Elements " + expected.length + " found " + found.length;
+        }else{
+            for(let i=0; i<expected.length; i++){
+                if(expected[i] !== found[i]){
+                    return "TEST FAILED.  Expected Element " + expected[i] + " found " + found[i];
+                }
+            }
+            return "TEST SUCCEEDED";
+        }
+      }
+
+      function sum(num) {
+        const initialValue = 0;
+        return num.reduce(
+          (previousValue, currentValue) => previousValue + currentValue,
+          initialValue
+        );
+      }
+
+      function multiply(num) {
+        const initialValue = 1;
+        return num.reduce(
+          (previousValue, currentValue) => previousValue * currentValue,
+          initialValue
+        );
+      }
+
+      console.log(
+        "Excepted out of sum([1, 2, 3, 4]) is 10 " +
+          myFunctionTest(10, sum([1, 2, 3, 4]))
+      );
+
+      console.log(
+        "Excepted out of multiply([1, 2, 3, 4]) is 24 " +
+          myFunctionTest(24, multiply([1, 2, 3, 4]))
+      );
+
+      function reverse(str) {
+        return str.split("").reverse().join("");
+      }
+
+      console.log(
+        'Excepted out of reverse("daniel") is leinad ' +
+          myFunctionTest("leinad", reverse("daniel"))
+      );
+
+      function filterLongWords(words, length){
+        return words.filter((word) => word.length > length);
+      }
+
+      console.log(
+        "Excepted out of filterLongWords([Hello, Excellent, Gorgeous, Hey]) is [Excellent, Gorgeous] " +
+        myFunctionTestForLongWords(["Excellent", "Gorgeous"], filterLongWords(["Hello", "Excellent", "Gorgeous", "Hey"], 5))
+      );
+
+    </script>
+  </head>
+
+  <body>
+    <a href="https://terbinos.github.io">Back to home</a>
+    <p>
+      Look in the Chrome developer console to see the output. CTRL_SHIFT_J
+      <br />
+      Or on Firefox with CTRL_SHIFT_K
+    </p>
+  </body>
+</html>
